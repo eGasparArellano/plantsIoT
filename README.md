@@ -1,6 +1,7 @@
 # PlantsIoT
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
+Angular CLI version 9.0.5.
+Node version 12.18.3
 
 ## Install dependencies
 npm install
@@ -8,5 +9,5 @@ npm install
 ## Run backend locally
 npm run dev
 
-# Run frontend locally
+## Run frontend locally
 ng serve
