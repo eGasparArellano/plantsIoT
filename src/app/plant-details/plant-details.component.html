@@ -1,1 +1,51 @@
-<p>plant-details works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    
+                    <div class="preview-pic tab-content">
+                      <div class="tab-pane active" id="pic-1"><img src="https://www.gardeningknowhow.com/wp-content/uploads/2011/07/plant.jpg" /></div>
+                    </div>                
+                </div>
+                <div class="details col-md-6">
+                    <h3 class="product-title">Nombre de la Planta</h3>
+                   
+                    <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
+                    <h6 class="descriptors">cantidad: <span>2</span></h6>
+                    <h6 class="descriptors">frecuencia de riego: <span>2</span> dias</h6>
+                    <h6 class="descriptors">Ultima fecha de riego:  </h6>
+                    <h6><span>02/02/2020 22:22 </span></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        
+            
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Humedad</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Historial de Riego</a>
+            </li>     -->
+        </ul>
+
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/935349/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=2880&title=Humidity+%283+days%29&type=line"></iframe>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+              <h3>HOME</h3>
+              <p>Some content.</p>
+            </div>
+        </div>
+               
+            
+        
+    </div>
+</div>
