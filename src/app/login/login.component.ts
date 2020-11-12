@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,  private router: Router) { }
 
   ngOnInit(): void {
     // this.route.queryParams.subscribe((params) => {
@@ -24,13 +24,15 @@ export class LoginComponent implements OnInit {
     // });
   }
 
-  // submit(form: NgForm) {
-  //   // console.log(form.value.email, form.value.password);
-  //   // this.authService.login(form.value.email, form.value.password)
-  //   //     .subscribe((data) => {
-  //   //       console.log(data);
-  //   //       this.router.navigateByUrl('/home');
-  //   //     }, (err) => console.log(err));
-  // }
+  submit(form: NgForm) {
+    
+    this.router.navigateByUrl('/list');
+    // console.log(form.value.email, form.value.password);
+    // this.authService.login(form.value.email, form.value.password)
+    //     .subscribe((data) => {
+    //       console.log(data);
+    //       this.router.navigateByUrl('/home');
+    //     }, (err) => console.log(err));
+  }
 
 }

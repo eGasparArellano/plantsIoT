@@ -4,12 +4,12 @@
     <div class="container">
       <div class="signin-content">
         <div class="signin-image">
-          <figure><img src="assets/img/signin-image.jpg" alt="sign up image"></figure>
+          <figure><img src="assets/img/logo.png" alt="sign up image"></figure>
           <a href="/register" class="signup-image-link">Crear una cuenta</a>
         </div>
         <div class="signin-form"> 
           <h2 class="form-title">Iniciar Sesión</h2>
-          <form class="register-form" id="login-form" >
+          <form class="register-form" id="login-form" #f="ngForm" (ngSubmit)="submit(f)">
             <div class="form-group">
               <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
               <input type="text" ngModel name="email" id="your_name" placeholder="Usuario" required/>
