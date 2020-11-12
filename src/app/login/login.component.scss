@@ -78,8 +78,10 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-size: 36px; }
   
   .main {
-    background: #f8f8f8;
-    padding: 150px 0; }
+    background-color: #98dd8a;
+    background-image: url('../../assets/img/plant_bg.png');
+    padding: 150px 0; 
+  }
   
   .clear {
     clear: both; }
