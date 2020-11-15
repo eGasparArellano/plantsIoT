@@ -10,11 +10,11 @@
                     </div>                
                 </div>
                 <div class="details col-md-6">
-                    <h3 class="product-title">Nombre de la Planta</h3>
+                    <h3 class="product-title">{{plant['name']}}</h3>
                    
-                    <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-                    <h6 class="descriptors">cantidad: <span>2</span></h6>
-                    <h6 class="descriptors">frecuencia de riego: <span>2</span> dias</h6>
+                    <p class="product-description">{{plant['description']}}</p>
+                    <h6 class="descriptors">cantidad: <span>{{plant['quantity']}}</span></h6>
+                    <h6 class="descriptors">frecuencia de riego: <span>{{plant['irrigation_period']}}</span> dias</h6>
                     <h6 class="descriptors">Ultima fecha de riego:  </h6>
                     <h6><span>02/02/2020 22:22 </span></h6>
                 </div>
