@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
 import { PlantDetailsComponent } from './plant-details/plant-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PlantItemComponent } from './plants-list/plant-item/plant-item.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     PlantsListComponent,
     PlantDetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    PlantItemComponent
   ],
   imports: [
     BrowserModule,
