@@ -9,6 +9,7 @@ import { PlantsListComponent } from './plants-list/plants-list.component';
 import { PlantDetailsComponent } from './plant-details/plant-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PlantItemComponent } from './plants-list/plant-item/plant-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PlantItemComponent } from './plants-list/plant-item/plant-item.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

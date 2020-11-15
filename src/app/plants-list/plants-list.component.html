@@ -5,12 +5,8 @@
 
     <div class="container">
 		<div class="row justify-content-around">
-			<div class="col-lg-5 col-md-12">
-				<app-plant-item></app-plant-item>
-			</div>
-
-			<div class="col-lg-5 col-md-12">
-				<app-plant-item></app-plant-item>
+			<div class="col-lg-5 col-md-12" *ngFor="let plant of plantList">
+				<app-plant-item [plantInformation] = "plant"></app-plant-item>
 			</div>
 		</div>
 	</div>

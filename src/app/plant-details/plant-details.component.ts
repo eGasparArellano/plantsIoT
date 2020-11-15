@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PlantListService } from '../plants-list/plant-list.service';
 
 @Component({
   selector: 'app-plant-details',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plant-details.component.scss']
 })
 export class PlantDetailsComponent implements OnInit {
+  plant = {};
 
-  constructor() { }
+  constructor(private plantService: PlantListService, private route: ActivatedRoute, private router: Router) { 
+    
+  }
 
   ngOnInit(): void {
+    this.route.params.subscribe( (params) => {
+      this.plantService.plantSubject.subscribe((data) => {
+        this.plant = this.plantService.getPlantByIndex(params.id);
+      });
+    });
   }
 
 }
