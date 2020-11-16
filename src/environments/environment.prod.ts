@@ -1,6 +1,11 @@
 export const environment = {
   production: true,
-  url: ''// Heroku
+  url: '',
+  mqtt: {
+    server: 'broker.hivemq.com',
+    protocol: 'ws',
+    port: 8000
+  }
 };
 /*
   In this case the backend is in the same server,
