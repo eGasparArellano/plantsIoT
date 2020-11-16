@@ -13,6 +13,23 @@ class PlantController {
 
         res.json(plants);
     }
+
+    async addPlant(req, res) {
+        try {
+            let plant = req.body;
+            // Generate random ID
+            plant.id = parseInt((Math.random() * 1_000_000));
+            
+            // Save
+            const docs = await Plant.add(plant);
+            const addedPlant = JSON.parse(JSON.stringify(docs));
+            
+            res.json(addedPlant);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
 }
 
 const plantController = new PlantController();
