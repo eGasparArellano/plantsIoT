@@ -10,6 +10,15 @@ import { PlantDetailsComponent } from './plant-details/plant-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PlantItemComponent } from './plants-list/plant-item/plant-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
+import { environment } from 'src/environments/environment';
+
+const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: environment.mqtt.server,
+  port: environment.mqtt.port,
+  protocol: (environment.mqtt.protocol === 'wss') ? 'wss' : 'ws',
+  path: '/mqtt'
+};
 
 @NgModule({
   declarations: [
@@ -24,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS)
   ],
   providers: [],
   bootstrap: [AppComponent]
