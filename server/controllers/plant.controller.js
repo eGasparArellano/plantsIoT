@@ -13,6 +13,34 @@ class PlantController {
 
         res.json(plants);
     }
+
+    async addPlant(req, res) {
+        try {
+            let plant = req.body;
+            // Generate random ID
+            plant.id = parseInt((Math.random() * 1_000_000));
+            
+            // Save
+            const docs = await Plant.add(plant);
+            const addedPlant = JSON.parse(JSON.stringify(docs));
+
+            // Schedule job
+            const irrigationChannel = 'ITESO/iot/greenlife/1/regar';
+            req.schedule.scheduleJob('*/' + addedPlant.irrigationPeriod + ' * * * * *', function(){
+                req.mqttClient.publish(
+                    irrigationChannel, 
+                    'Regando a ' + addedPlant.name + ' cada ' + addedPlant.irrigationPeriod + 's'
+                );
+
+                console.log('Regando a ' + addedPlant.name + ' cada ' + addedPlant.irrigationPeriod + 's');
+            });
+            
+            res.json(addedPlant);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
 }
 
 const plantController = new PlantController();

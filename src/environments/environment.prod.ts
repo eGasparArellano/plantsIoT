@@ -1,9 +1,13 @@
 export const environment = {
   production: true,
-  url: 'https://plants-iot.herokuapp.com',
+  url: '',
   mqtt: {
     server: 'broker.hivemq.com',
     protocol: 'ws',
     port: 8000
   }
 };
+/*
+  In this case the backend is in the same server,
+  so resources are going to be searched in the same URL.
+*/

@@ -1,15 +1,55 @@
 <app-navbar></app-navbar>
 <div class="plant-list">
-    <h1 class="display-1">Mis Plantas</h1>
-    <hr>
+  <h1 class="display-1">Mis Plantas</h1>
 
-    <div class="container">
-		<div class="row justify-content-around">
-			<div class="col-lg-5 col-md-12" *ngFor="let plant of plantList">
-				<app-plant-item [plantInformation] = "plant"></app-plant-item>
-			</div>
-		</div>
-	</div>
+  <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addPlantModal">
+    Agregar planta
+  </button>
+  <hr>
+
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-lg-5 col-md-12" *ngFor="let plant of plantList">
+        <app-plant-item [plantInformation]="plant"></app-plant-item>
+      </div>
+    </div>
+  </div>
 </div>
 
-
+<!-- Modal -->
+<div class="modal fade" id="addPlantModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar una planta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+		  <label for="plantName">Nombre</label>
+          <input type="text" class="form-control" name="plantName" id="plantName" [(ngModel)]="newPlant.name" required>
+          <label for="plantDescription">Descripción</label>
+          <input type="text" class="form-control" name="plantDescription" id="plantDescription" [(ngModel)]="newPlant.description" required>
+          <div class="row">
+            <div class="col-6">
+              <label for="plantQuantity">Cantidad</label>
+              <input type="number" class="form-control" name="plantQuantity" id="plantQuantity" [(ngModel)]="newPlant.quantity" required min="1">
+            </div>
+            <div class="col-6">
+              <label for="plantIrrigationPeriod">Periodo riego</label>
+              <input type="number" class="form-control" name="plantIrrigationPeriod" id="plantIrrigationPeriod"
+                placeholder="Número de días" [(ngModel)]="newPlant.irrigationPeriod" required min="1">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="saveNewPlant()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

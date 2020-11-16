@@ -29,8 +29,16 @@ export class PlantListService {
   }
 
   getPlantByIndex(index) {
-    return  this.plantList.find((element) => element.id == index);
+    return  this.plantList.find((element) => element.id === index);
   }
 
-
+  addPlant(plant) {
+    this.http.post<any>(environment.url + '/api/plants', plant).subscribe(
+      (data) => {
+        this.plantList.push(data);
+        this.plantSubject.next(this.getPlants());
+      },
+      (err) => console.log(err)
+    );
+  }
 }
