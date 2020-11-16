@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Plant } from 'src/models/Plant';
 import { PlantListService } from './plant-list.service';
+
+// Use JQuery
+declare var $: any;
 
 @Component({
   selector: 'app-plants-list',
@@ -9,8 +13,11 @@ import { PlantListService } from './plant-list.service';
 })
 export class PlantsListComponent implements OnInit {
   plantList;
+  newPlant: Plant;
 
-  constructor(private route: ActivatedRoute,  private router: Router, private plantService: PlantListService) { }
+  constructor(private route: ActivatedRoute,  private router: Router, private plantService: PlantListService) { 
+    this.newPlant = new Plant();
+  }
 
   ngOnInit(): void {
     this.plantList = this.plantService.getPlants();
@@ -23,5 +30,8 @@ export class PlantsListComponent implements OnInit {
     );
   }
 
-
+  saveNewPlant() {
+    this.plantService.addPlant(this.newPlant);
+    $('#addPlantModal').modal('toggle');
+  }
 }
