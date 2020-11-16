@@ -10,9 +10,9 @@ mongoose.connect(url, {
     useUnifiedTopology: true,
     useFindAndModify: false
 }).then(() => {
-    console.log("Connected to database");
+    console.log("Connected to Database");
 }).catch((err) => {
-    console.log("Not connected to database", err);
+    console.log("Not connected to Database", err);
 });
 
 module.exports = mongoose;
