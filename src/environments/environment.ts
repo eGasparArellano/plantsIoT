@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   url: 'http://localhost:3000',
   mqtt: {
-    server: '127.0.0.1',
+    server: 'broker.hivemq.com',
     protocol: 'ws',
     port: 8000
   }
