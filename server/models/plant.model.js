@@ -43,6 +43,11 @@ class Plant extends DataBaseWrapper {
         return await super.add(document);
     }
 
+    async getPlantById(id, projection = "", options = {}) {
+        const plantId = { id };
+        return await super.queryOne(plantId, projection, options);
+    }
+
     async getPlants(query = {}, projection = "", options = {}) {
         return await super.query(query, projection, options);
     }

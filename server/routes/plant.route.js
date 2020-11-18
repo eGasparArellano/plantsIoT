@@ -7,4 +7,7 @@ router.route('/')
     .get(PlantController.getPlants)
     .post(PlantController.addPlant)
 
+router.route("/:id")
+    .get(PlantController.getPlantById)
+
 module.exports = router;
