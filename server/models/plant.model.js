@@ -29,6 +29,10 @@ class Plant extends DataBaseWrapper {
             irrigationPeriod: {
                 type: Number,
                 required: true
+            },
+            plantNumber: {
+                type: Number,
+                required: true
             }
         });
         
@@ -53,7 +57,8 @@ const plant = new Plant();
 //     quantity: 10,
 //     name: 'Suculentas',
 //     description: 'Plantas chiquitas',
-//     irrigationPeriod: 3
+//     irrigationPeriod: 3,
+//     plantNumber:1
 // };
 
 // plant.add(info).then((value) => console.log(value));

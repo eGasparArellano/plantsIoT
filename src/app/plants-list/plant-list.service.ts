@@ -28,6 +28,10 @@ export class PlantListService {
     return this.plantList;
   }
 
+  getNextPlantNumber() {
+    return this.plantList.length + 1;
+  }
+
   getPlantByIndex(index) {
     return  this.plantList.find((element) => element.id === index);
   }
