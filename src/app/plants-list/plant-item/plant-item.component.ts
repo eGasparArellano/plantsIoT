@@ -24,8 +24,7 @@ export class PlantItemComponent implements OnInit {
   }
 
   irrigatePlant() {
-    console.log(this.plantInformation);
-    this.irrigateService.irrigate(this.plantInformation.id);
+    this.irrigateService.irrigate(this.plantInformation.plantNumber);
   }
 
 }

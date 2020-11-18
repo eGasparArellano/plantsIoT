@@ -25,7 +25,7 @@ class PlantController {
             const addedPlant = JSON.parse(JSON.stringify(docs));
 
             // Schedule job
-            const irrigationChannel = 'ITESO/iot/greenlife/1/regar';
+            const irrigationChannel = 'ITESO/IoT/GreenLife/' + plant.plantNumber;
             req.schedule.scheduleJob('*/' + addedPlant.irrigationPeriod + ' * * * * *', function(){
                 req.mqttClient.publish(
                     irrigationChannel, 

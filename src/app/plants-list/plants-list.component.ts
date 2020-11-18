@@ -31,6 +31,7 @@ export class PlantsListComponent implements OnInit {
   }
 
   saveNewPlant() {
+    this.newPlant.plantNumber = this.plantService.getNextPlantNumber();
     this.plantService.addPlant(this.newPlant);
     $('#addPlantModal').modal('toggle');
     this.newPlant = new Plant();
