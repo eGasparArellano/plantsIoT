@@ -29,6 +29,10 @@ class Plant extends DataBaseWrapper {
             irrigationPeriod: {
                 type: Number,
                 required: true
+            },
+            plantNumber: {
+                type: Number,
+                required: true
             }
         });
         
@@ -37,6 +41,11 @@ class Plant extends DataBaseWrapper {
     
     async add(document) {
         return await super.add(document);
+    }
+
+    async getPlantById(id, projection = "", options = {}) {
+        const plantId = { id };
+        return await super.queryOne(plantId, projection, options);
     }
 
     async getPlants(query = {}, projection = "", options = {}) {
@@ -53,7 +62,8 @@ const plant = new Plant();
 //     quantity: 10,
 //     name: 'Suculentas',
 //     description: 'Plantas chiquitas',
-//     irrigationPeriod: 3
+//     irrigationPeriod: 3,
+//     plantNumber:1
 // };
 
 // plant.add(info).then((value) => console.log(value));

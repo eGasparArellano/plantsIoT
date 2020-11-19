@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Plant } from 'src/models/Plant';
 import { PlantListService } from '../plants-list/plant-list.service';
 
 @Component({
@@ -8,18 +9,22 @@ import { PlantListService } from '../plants-list/plant-list.service';
   styleUrls: ['./plant-details.component.scss']
 })
 export class PlantDetailsComponent implements OnInit {
-  plant = {};
+  plant: Plant;
 
-  constructor(private plantService: PlantListService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private plantService: PlantListService, private route: ActivatedRoute, private router: Router) {
+    this.plant = new Plant();
+  }
 
   ngOnInit(): void {
-    this.plantService.loadPlants();
     this.route.params.subscribe( (params) => {
-      this.plantService.plantSubject.subscribe((data) => {
-        this.plant = this.plantService.getPlantByIndex(params.id);
+      // Request information
+      this.plantService.getPlantById(params.id);
+
+      // Subscribe to receive info
+      this.plantService.singlePlantSubject.subscribe((data) => {
+        this.plant = data;
       });
     });
   }
-
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
+import { Plant } from 'src/models/Plant';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Subject } from 'rxjs';
 export class PlantListService {
   plantList: any[];
   plantSubject = new Subject<any>();
+  singlePlantSubject = new Subject<Plant>();
 
   constructor(private http: HttpClient) {
     this.loadPlants();
@@ -24,8 +26,21 @@ export class PlantListService {
     );
   }
 
+  getPlantById(id) {
+    this.http.get<Plant>(environment.url + '/api/plants/' + id).subscribe(
+      (data: Plant) => {
+        this.singlePlantSubject.next(data);
+      },
+      (err) => console.log(err)
+    );
+  }
+
   getPlants() {
     return this.plantList;
+  }
+
+  getNextPlantNumber() {
+    return this.plantList.length + 1;
   }
 
   getPlantByIndex(index) {

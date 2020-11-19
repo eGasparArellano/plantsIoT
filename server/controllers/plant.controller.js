@@ -14,6 +14,18 @@ class PlantController {
         res.json(plants);
     }
 
+    async getPlantById(req, res) {
+        let query = {}          // Search by some criteria
+        let projection = "";    // Which fields are wanted
+        let options = {}        // Page or limit
+        
+        const id = req.params.id;
+        const docs = await Plant.getPlantById(id, projection, options);
+        const plant = JSON.parse(JSON.stringify(docs));
+
+        res.json(plant);
+    }
+
     async addPlant(req, res) {
         try {
             let plant = req.body;
@@ -25,7 +37,7 @@ class PlantController {
             const addedPlant = JSON.parse(JSON.stringify(docs));
 
             // Schedule job
-            const irrigationChannel = 'ITESO/iot/greenlife/1/regar';
+            const irrigationChannel = 'ITESO/IoT/GreenLife/' + plant.plantNumber;
             req.schedule.scheduleJob('*/' + addedPlant.irrigationPeriod + ' * * * * *', function(){
                 req.mqttClient.publish(
                     irrigationChannel, 
