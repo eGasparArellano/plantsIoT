@@ -24,7 +24,7 @@ export class IrrigateService {
       topicName,
       '1',
       {
-        qos: 1,
+        qos: 0,
         retain: true
       }
     );
