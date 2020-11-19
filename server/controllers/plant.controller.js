@@ -30,7 +30,7 @@ class PlantController {
         try {
             let plant = req.body;
             // Generate random ID
-            plant.id = parseInt((Math.random() * 1_000_000));
+            plant.id = parseInt((Math.random() * 1000000));
             
             // Save
             const docs = await Plant.add(plant);

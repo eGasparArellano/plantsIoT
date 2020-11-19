@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PlantsListComponent } from './plants-list/plants-list.component';
-import { PlantDetailsComponent } from './plant-details/plant-details.component';
+import { PlantDetailsComponent, SafePipe } from './plant-details/plant-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PlantItemComponent } from './plants-list/plant-item/plant-item.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,7 +27,8 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     PlantsListComponent,
     PlantDetailsComponent,
     NavbarComponent,
-    PlantItemComponent
+    PlantItemComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

@@ -36,14 +36,22 @@
             </li>     -->
         </ul>
 
-        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/935349/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=2880&title=Humidity+%283+days%29&type=line"></iframe>
+        
+        <div>
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" [src]="chartSource | safe"></iframe>
+            <h6 class="descriptors">Ultima medición de humedad </h6>
+            <h6><span>{{lastHumidityRead}} </span></h6>
+        </div>
+        
 
-        <div class="tab-content">
+        
+
+        <!-- <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
               <h3>HOME</h3>
               <p>Some content.</p>
             </div>
-        </div>
+        </div> -->
                
             
         
