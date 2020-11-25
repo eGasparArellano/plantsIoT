@@ -41,7 +41,7 @@ class PlantController {
             req.schedule.scheduleJob('*/' + addedPlant.irrigationPeriod + ' * * * * *', function(){
                 req.mqttClient.publish(
                     irrigationChannel, 
-                    'Regando a ' + addedPlant.name + ' cada ' + addedPlant.irrigationPeriod + 's'
+                    '1'
                 );
 
                 console.log('Regando a ' + addedPlant.name + ' cada ' + addedPlant.irrigationPeriod + 's');
