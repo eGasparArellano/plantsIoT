@@ -1,0 +1,19 @@
+<div class="row align-items-center">
+    <div class="col">
+        <rg-gauge-chart
+            [canvasWidth] = "canvasWidth"
+            [needleValue] = "needleValue"
+            [centralLabel] = "centralLabel"
+            [options] = "options"
+            [name] = "name"
+            [bottomLabel] = "bottomLabel">
+        </rg-gauge-chart>
+    </div>
+    <div class="col">
+        <svg height="250" width="200">
+            <circle cx="100" cy="120" r="90" stroke="black" stroke-width="1" [attr.fill]="circleState" />
+        </svg> 
+        <h3> <b> Estado </b> <h4>{{stringState}}</h4></h3>
+        
+    </div>
+</div>

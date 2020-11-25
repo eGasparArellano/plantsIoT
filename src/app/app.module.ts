@@ -12,6 +12,9 @@ import { PlantItemComponent } from './plants-list/plant-item/plant-item.componen
 import { HttpClientModule } from '@angular/common/http';
 import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
 import { environment } from 'src/environments/environment';
+import { HumidityGraphComponent } from './plant-details/humidity-graph/humidity-graph.component';
+import { GaugeChartModule } from 'angular-gauge-chart';
+
 
 const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: environment.mqtt.server,
@@ -28,14 +31,16 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     PlantDetailsComponent,
     NavbarComponent,
     PlantItemComponent,
-    SafePipe
+    SafePipe,
+    HumidityGraphComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MqttModule.forRoot(MQTT_SERVICE_OPTIONS)
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
+    GaugeChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

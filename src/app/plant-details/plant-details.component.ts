@@ -13,7 +13,7 @@ import { PlantListService } from '../plants-list/plant-list.service';
 export class PlantDetailsComponent implements OnInit {
   plant: Plant;
   chartSource: string;
-  lastHumidityRead: string;
+  humidity: number;
 
   constructor(private plantService: PlantListService,
               private route: ActivatedRoute,
@@ -21,7 +21,7 @@ export class PlantDetailsComponent implements OnInit {
               private http: HttpClient) {
     this.plant = new Plant();
     this.chartSource = '';
-    this.lastHumidityRead = '';
+    this.humidity = 50;
   }
 
   ngOnInit(): void {
