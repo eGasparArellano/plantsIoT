@@ -56,4 +56,16 @@ export class PlantListService {
       (err) => console.log(err)
     );
   }
+
+  deletePlant(id) {
+    this.http.delete<any>(environment.url + '/api/plants/' + id).subscribe(
+      (data) => {
+        // console.log(data);
+        const index = this.plantList.findIndex((plant) => plant.id === id);
+        this.plantList.splice(index, 1);
+        this.plantSubject.next(this.getPlants());
+      },
+      (err) => console.log(err)
+    );
+  }
 }
