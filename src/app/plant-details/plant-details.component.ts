@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Plant } from 'src/models/Plant';
 import { PlantListService } from '../plants-list/plant-list.service';
 
+// Use JQuery
+declare var $: any;
+
 @Component({
   selector: 'app-plant-details',
   templateUrl: './plant-details.component.html',
@@ -35,6 +38,12 @@ export class PlantDetailsComponent implements OnInit {
       });
     });
 
+  }
+
+  async deletePlant() {
+    this.plantService.deletePlant(this.plant.id);
+    $('#deletePlantModal').modal('toggle');
+    this.router.navigateByUrl('/list');
   }
 
 

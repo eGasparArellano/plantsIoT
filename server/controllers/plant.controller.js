@@ -38,7 +38,9 @@ class PlantController {
 
             // Schedule job
             const irrigationChannel = 'ITESO/IoT/GreenLife/' + plant.plantNumber;
-            req.schedule.scheduleJob('*/' + addedPlant.irrigationPeriod + ' * * * * *', function(){
+            const jobName = '' + plant.id;
+            const rule = '*/' + addedPlant.irrigationPeriod + ' * * * * *';
+            req.schedule.scheduleJob(jobName, rule, function(){
                 req.mqttClient.publish(
                     irrigationChannel, 
                     '1'
@@ -52,6 +54,30 @@ class PlantController {
             console.log(e);
             res.sendStatus(500);
         }
+    }
+
+    async deletePlant(req, res) {
+        try {
+            const id = req.params.id;
+
+            // Delete
+            const docs = await Plant.delete(id);
+            const deletedPlant = JSON.parse(JSON.stringify(docs));
+            req.schedule.cancelJob(id);
+
+            res.json(JSON.stringify(deletedPlant));
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    async killAlljobs(req, res) {
+        const jobs = req.schedule.scheduledJobs;
+        for (let job in jobs) {
+            req.schedule.cancelJob(job);
+        }
+        res.send('All jobs were killed'); 
     }
 }
 
