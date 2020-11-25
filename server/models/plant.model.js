@@ -55,6 +55,11 @@ class Plant extends DataBaseWrapper {
     async update(query, data) {
         return await super.update(query, data);
     }
+
+    async delete(id) {
+        const plantId = { id };
+        return await super.delete(plantId);
+    }
 }
 const plant = new Plant();
 // let info = {
