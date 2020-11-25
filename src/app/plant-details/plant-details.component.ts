@@ -32,15 +32,12 @@ export class PlantDetailsComponent implements OnInit {
       this.plantService.singlePlantSubject.subscribe((data) => {
         this.plant = data;
         this.chartSource = `https://thingspeak.com/channels/1233836/charts/${data.plantNumber}?bgcolor=%23ffffff&color=%23d62020&dynamic=true&max=300&min=0&results=60&title=${data.name}&type=line&yaxis=Humidity+level&yaxismax=300&yaxismin=0`;
-        // this.http.get(`https://api.thingspeak.com/channels/1233836/fields/${data.plantNumber}/last.json?api_key=R2Q3S0ZMT3CIWW5W`).subscribe(
-        //   (info) => {
-        //     this.lastHumidityRead = info[`field${data.plantNumber}`];
-        //   }
-        // );
       });
     });
 
   }
+
+
 }
 
 @Pipe({name: 'safe'})
