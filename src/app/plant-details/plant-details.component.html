@@ -47,8 +47,7 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div class="tab-pane active" id="humidity" role="tabpanel" aria-labelledby="humidity-tab">
-        
-               <app-humidity-graph [desiredValue]="humidity"></app-humidity-graph>
+               <app-humidity-graph *ngIf="plant.plantNumber > 0" [plantId]="plant.plantNumber" [desiredValue]="humidity"></app-humidity-graph>
             
     </div>
     <div class="tab-pane " id="graph" role="tabpanel" aria-labelledby="graph-tab">

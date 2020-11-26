@@ -34,6 +34,7 @@ export class PlantDetailsComponent implements OnInit {
       // Subscribe to receive info
       this.plantService.singlePlantSubject.subscribe((data) => {
         this.plant = data;
+        console.log(data);
         this.chartSource = `https://thingspeak.com/channels/1233836/charts/${data.plantNumber}?bgcolor=%23ffffff&color=%23d62020&dynamic=true&max=300&min=0&results=60&title=${data.name}&type=line&yaxis=Humidity+level&yaxismax=300&yaxismin=0`;
       });
     });

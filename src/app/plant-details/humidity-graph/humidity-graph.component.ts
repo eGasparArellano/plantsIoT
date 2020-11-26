@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as Chart from 'chart.js';
+import { interval, Observable } from 'rxjs';
+import { ThinkspeakService } from 'src/app/thinkspeak-service/thinkspeak.service';
 
 @Component({
   selector: 'app-humidity-graph',
@@ -18,8 +20,10 @@ export class HumidityGraphComponent implements OnInit {
   stringState: string;
 
   @Input() desiredValue: number;
+  @Input() plantId: number;
 
-  constructor() {
+
+  constructor(private thinkspeakService: ThinkspeakService) {
     this.canvasWidth = 400;
     this.needleValue = 50;
     this.centralLabel = '';
@@ -34,14 +38,21 @@ export class HumidityGraphComponent implements OnInit {
       rangeLabel: ['0', '100'],
       needleStartValue: 50,
     };
+
   }
 
   ngOnInit(): void {
     this.options.arcDelimiters = [this.desiredValue - 15, this.desiredValue - 5, this.desiredValue + 5, this.desiredValue + 15];
-    this.updateState(50);
+    this.thinkspeakService.getFieldValue(this.plantId).subscribe(
+      (data: any) => {
+        this.needleValue = data[`field${this.plantId}`];
+        this.bottomLabel = data[`field${this.plantId}`];
+        this.updateState(this.needleValue);
+      }
+    );
   }
 
-  updateState(measurement): void{
+  updateState(measurement): void {
     if (measurement >= this.desiredValue - 5 && measurement <= this.desiredValue + 5) {
       this.circleState = 'green';
       this.stringState = 'Óptimo';
@@ -50,7 +61,7 @@ export class HumidityGraphComponent implements OnInit {
       this.stringState = 'Critico';
     } else {
       this.circleState = 'yellow';
-      this.stringState = 'No Óptimo'
+      this.stringState = 'No Óptimo';
     }
   }
 
