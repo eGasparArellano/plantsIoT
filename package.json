@@ -23,6 +23,7 @@
     "@angular/router": "~9.0.5",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "angular-gauge-chart": "^0.7.2",
+    "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "chartjs-gauge": "^0.2.0",
