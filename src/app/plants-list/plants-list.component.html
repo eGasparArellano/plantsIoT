@@ -35,13 +35,13 @@
           <input type="text" class="form-control" name="plantDescription" id="plantDescription" [(ngModel)]="newPlant.description" required>
           <div class="row">
             <div class="col-6">
-              <label for="plantQuantity">Cantidad</label>
-              <input type="number" class="form-control" name="plantQuantity" id="plantQuantity" [(ngModel)]="newPlant.quantity" required min="1">
+              <label for="plantHumidity">Nivel de humedad</label>
+              <input type="number" class="form-control" name="plantHumidity" id="plantHumidity" [(ngModel)]="newPlant.humidity" required min="0">
             </div>
             <div class="col-6">
-              <label for="plantIrrigationPeriod">Periodo riego</label>
+              <!-- <label for="plantIrrigationPeriod">Periodo riego</label>
               <input type="number" class="form-control" name="plantIrrigationPeriod" id="plantIrrigationPeriod"
-                placeholder="Número de días" [(ngModel)]="newPlant.irrigationPeriod" required min="1">
+                placeholder="Número de días" [(ngModel)]="newPlant.irrigationPeriod" required min="1"> -->
             </div>
           </div>
         </div>

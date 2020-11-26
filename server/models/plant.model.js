@@ -15,10 +15,6 @@ class Plant extends DataBaseWrapper {
                 required: true,
                 unique: true
             },
-            quantity: {
-                type: Number,
-                required: true
-            },
             name: {
                 type: String,
                 required: true
@@ -26,7 +22,7 @@ class Plant extends DataBaseWrapper {
             description: {
                 type: String
             },
-            irrigationPeriod: {
+            humidity: {
                 type: Number,
                 required: true
             },
@@ -64,10 +60,9 @@ class Plant extends DataBaseWrapper {
 const plant = new Plant();
 // let info = {
 //     id: 1,
-//     quantity: 10,
 //     name: 'Suculentas',
 //     description: 'Plantas chiquitas',
-//     irrigationPeriod: 3,
+//     humidity: 3,
 //     plantNumber:1
 // };
 

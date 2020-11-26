@@ -2,16 +2,14 @@ export class Plant {
     id: number;
     name: string;
     description: string;
-    quantity: number;
-    irrigationPeriod: number;
+    humidity: number;
     plantNumber: number;
 
     constructor() {
         this.id = -1;
         this.name = '';
         this.description = '';
-        this.quantity = 1;
-        this.irrigationPeriod = 1;
+        this.humidity = 0;
         this.plantNumber = -1;
     }
 }
