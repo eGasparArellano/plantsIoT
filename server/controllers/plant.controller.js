@@ -1,5 +1,6 @@
 'use strict';
 
+const axios = require('axios').default;
 const Plant = require('../models/plant.model');
 
 class PlantController {
@@ -37,16 +38,24 @@ class PlantController {
             const addedPlant = JSON.parse(JSON.stringify(docs));
 
             // Schedule job
-            const irrigationChannel = 'ITESO/IoT/GreenLife/' + plant.plantNumber;
             const jobName = '' + plant.id;
-            const rule = '*/' + addedPlant.irrigationPeriod + ' * * * * *';
-            req.schedule.scheduleJob(jobName, rule, function(){
-                req.mqttClient.publish(
-                    irrigationChannel, 
-                    '1'
-                );
+            const rule = '*/' + 10 + ' * * * * *'; // 5 seconds
+            
+            req.schedule.scheduleJob(jobName, rule, async function(){
+                // Get information from ThingSpeak
+                const tsChannelId = 1233836; // Test id
+                const thingSpeakUrl = `https://api.thingspeak.com/channels/${tsChannelId}/fields/${addedPlant.plantNumber}/last.json`;
+                const plantInfo = await axios.get(thingSpeakUrl);
+                const humidity = parseInt(plantInfo['data']['field' + addedPlant.plantNumber]);
 
-                console.log('Regando a ' + addedPlant.name + ' cada ' + addedPlant.irrigationPeriod + 's');
+                if (humidity < addedPlant.humidity) {
+                    // Send signal to water the plant
+                    const irrigationChannel = 'ITESO/IoT/GreenLife/' + addedPlant.plantNumber;
+                    req.mqttClient.publish(
+                        irrigationChannel, 
+                        '1'
+                    );
+                }
             });
             
             res.json(addedPlant);
