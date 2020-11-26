@@ -77,7 +77,7 @@ class PlantController {
         for (let job in jobs) {
             req.schedule.cancelJob(job);
         }
-        res.send('All jobs were killed'); 
+        res.send('All jobs were killed...'); 
     }
 }
 
