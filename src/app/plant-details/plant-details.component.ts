@@ -47,6 +47,10 @@ export class PlantDetailsComponent implements OnInit {
     this.router.navigateByUrl('/list');
   }
 
+  goToHome() {
+    this.router.navigateByUrl('/list');
+  }
+
 
 }
 
