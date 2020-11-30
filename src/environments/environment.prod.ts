@@ -3,7 +3,7 @@ export const environment = {
   url: '',
   mqtt: {
     server: 'broker.hivemq.com',
-    protocol: 'ws',
+    protocol: 'wss',
     port: 8000
   }
 };
