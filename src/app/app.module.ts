@@ -18,7 +18,7 @@ import { GaugeChartModule } from 'angular-gauge-chart';
 
 const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: environment.mqtt.server,
-  // port: environment.mqtt.port,
+  port: environment.mqtt.port,
   protocol: (environment.mqtt.protocol === 'wss') ? 'wss' : 'ws',
   path: '/mqtt'
 };
